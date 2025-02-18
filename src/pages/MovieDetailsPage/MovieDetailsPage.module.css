@@ -1,0 +1,30 @@
+.main_info_container {
+  display: flex;
+  gap: 20px;
+  border-bottom: gray solid;
+  padding: 30px;
+}
+
+.main_info_container img {
+  width: 500px;
+}
+
+.movie_info_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+.movie_info_text h3 {
+  font-weight: bold;
+}
+
+.movie_info_text h2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.movie_info_text ul {
+  display: flex;
+  gap: 10px;
+}
