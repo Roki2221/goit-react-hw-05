@@ -29,7 +29,6 @@ export default function MovieCast() {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Error</p>}
-      {console.log(movieCast)}{" "}
       {movieCast.length > 0 && (
         <ul>
           {movieCast.map((actor) => {

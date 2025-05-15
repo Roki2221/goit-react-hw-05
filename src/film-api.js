@@ -22,7 +22,7 @@ export const fetchSpecificMovie = async (movieId) => {
   return response.data;
 };
 
-export const fetchMovieReview = async (movieId) => {
+export const fetchMovieReviews = async (movieId) => {
   const response = await axios.get(
     `/movie/${movieId}/reviews?language=en-US&page=1`,
     options
@@ -33,6 +33,14 @@ export const fetchMovieReview = async (movieId) => {
 export const fetchMovieCast = async (movieId) => {
   const response = await axios.get(
     `/movie/${movieId}/credits?language=en-US`,
+    options
+  );
+  return response.data;
+};
+
+export const fetchSearchedMovie = async (query) => {
+  const response = await axios.get(
+    `/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
     options
   );
   return response.data;
