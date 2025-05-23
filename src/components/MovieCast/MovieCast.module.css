@@ -1,3 +1,9 @@
 .cast_item img {
   width: 100px;
 }
+.cast_list {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 20px;
+}

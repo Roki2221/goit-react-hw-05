@@ -30,7 +30,7 @@ export default function MovieCast() {
       {loading && <p>Loading...</p>}
       {error && <p>Error</p>}
       {movieCast.length > 0 && (
-        <ul>
+        <ul className={css.cast_list}>
           {movieCast.map((actor) => {
             return (
               <li key={actor.id} className={css.cast_item}>

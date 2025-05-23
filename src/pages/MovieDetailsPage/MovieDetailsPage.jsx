@@ -1,6 +1,7 @@
 import { fetchSpecificMovie } from "../../film-api";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Suspense } from "react";
 import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
@@ -8,6 +9,8 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(false);
   const [movieData, setMovieData] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state ?? "/";
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -31,9 +34,9 @@ export default function MovieDetailsPage() {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Error</p>}
-      <Link to="/">Go back</Link>
+      <Link to={backLinkHref}>Go back</Link>
       {Object.keys(movieData).length > 0 && (
-        <div>
+        <div className={css.movie_details_container}>
           <div className={css.main_info_container}>
             <div>
               <img
@@ -57,7 +60,7 @@ export default function MovieDetailsPage() {
             </div>
           </div>
           <div>
-            <h3>Additional information</h3>
+            <h3>Additional information</h3> {console.log("1")}
             <ul>
               <li>
                 <Link to={"cast"}>Cast</Link>
@@ -67,7 +70,9 @@ export default function MovieDetailsPage() {
               </li>
             </ul>
           </div>
-          <Outlet />
+          <Suspense fallback={<div>Loading page...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       )}
     </>
